@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Environment variables and API keys
+.env
+.env.*
+
+# Allow the example environment file
+!.env.example
+
+# Debug logs
+npm-debug.log*
