@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript AI Tutor</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">JS</div>
+
+                <div>
+                    <h2>JavaScript Tutor</h2>
+                    <p>AI Learning Assistant</p>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <p class="section-title">التعلم</p>
+
+                <button class="sidebar-item active" data-page="chat">
+    <span>💬</span>
+    <span>المحادثة الجديدة</span>
+</button>
+
+<button class="sidebar-item" data-page="curriculum">
+    <span>📚</span>
+    <span>المنهج الدراسي</span>
+</button>
+
+<button class="sidebar-item" data-page="progress">
+    <span>📊</span>
+    <span>تقدمي الدراسي</span>
+</button>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="status-indicator"></div>
+                <span>JavaScript AI Tutor</span>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="chat-header">
+
+                <div>
+                    <h1>المحادثة التعليمية</h1>
+                    <p>تعلم JavaScript خطوة بخطوة</p>
+                </div>
+
+                <div class="model-badge">
+                    <span class="status-indicator"></span>
+                    Gemini AI
+                </div>
+
+            </header>
+
+
+            <!-- Chat Messages -->
+            <section class="chat-area">
+
+                <div class="welcome-message">
+
+                    <div class="welcome-icon">JS</div>
+
+                    <h2>مرحباً بك في JavaScript AI Tutor</h2>
+
+                    <p>
+                        أنا مدرسك الشخصي في JavaScript.
+                        سنبدأ من الأساسيات ونتقدم معاً
+                        حتى تصبح قادراً على بناء تطبيقات حقيقية.
+                    </p>
+
+                    <div class="suggestion-cards">
+
+                        <div class="suggestion-card">
+                            <span>📖</span>
+                            <h3>ابدأ التعلم</h3>
+                            <p>ابدأ درسك الأول في JavaScript.</p>
+                        </div>
+
+                        <div class="suggestion-card">
+                            <span>💡</span>
+                            <h3>اسأل سؤالاً</h3>
+                            <p>ناقش أي مفهوم برمجي لا تفهمه.</p>
+                        </div>
+
+                        <div class="suggestion-card">
+                            <span>⌨️</span>
+                            <h3>تدرب عملياً</h3>
+                            <p>حل تمارين برمجية واختبر فهمك.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Message Input -->
+            <footer class="chat-input-container">
+
+                <form class="chat-form">
+
+                    <textarea
+                        id="message-input"
+                        placeholder="اكتب سؤالك هنا..."
+                        rows="1"
+                    ></textarea>
+
+                    <button type="submit" id="send-button">
+                        إرسال
+                        <span>➤</span>
+                    </button>
+
+                </form>
+
+                <p class="input-disclaimer">
+                    JavaScript AI Tutor قد يقدم إجابات غير دقيقة.
+                    تحقق من الأكواد والنتائج بنفسك.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

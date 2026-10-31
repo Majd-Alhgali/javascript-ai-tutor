@@ -1,0 +1,624 @@
+/* =================================
+   1. Global Settings
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #0b0f19;
+    --sidebar: #111827;
+    --surface: #161f30;
+    --surface-hover: #202c40;
+
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+
+    --border: #263247;
+    --success: #22c55e;
+}
+
+body {
+    font-family: "Noto Sans Arabic", "Segoe UI", sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+
+    min-height: 100vh;
+    direction: rtl;
+}
+
+
+/* =================================
+   2. Main Layout
+================================= */
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =================================
+   3. Sidebar
+================================= */
+
+.sidebar {
+    width: 270px;
+    min-width: 270px;
+
+    background: var(--sidebar);
+    border-left: 1px solid var(--border);
+
+    padding: 25px 18px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand-icon,
+.welcome-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+
+    border-radius: 13px;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    direction: ltr;
+}
+
+.brand h2 {
+    font-size: 15px;
+    direction: ltr;
+    text-align: right;
+}
+
+.brand p {
+    color: var(--text-secondary);
+    font-size: 11px;
+    margin-top: 4px;
+    direction: ltr;
+    text-align: right;
+}
+
+
+/* =================================
+   4. Sidebar Navigation
+================================= */
+
+.sidebar-section {
+    margin-top: 35px;
+}
+
+.section-title {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-bottom: 15px;
+    padding-right: 10px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px 12px;
+    margin-bottom: 7px;
+
+    border-radius: 9px;
+
+    color: var(--text-secondary);
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: 0.2s;
+    width: 100%;
+border: none;
+font-family: inherit;
+text-align: right;
+background: transparent;
+}
+
+.sidebar-item:hover {
+    background: var(--surface-hover);
+    color: var(--text-primary);
+}
+
+.sidebar-item.active {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    border-right: 3px solid var(--primary);
+}
+
+
+/* =================================
+   5. Sidebar Footer
+================================= */
+
+.sidebar-footer {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 15px 8px;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+
+    background: var(--success);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+/* =================================
+   6. Main Content
+================================= */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+}
+
+
+/* =================================
+   7. Chat Header
+================================= */
+
+.chat-header {
+    height: 85px;
+    min-height: 85px;
+
+    padding: 0 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.chat-header h1 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.chat-header p {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.model-badge {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    background: var(--surface);
+
+    padding: 9px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    color: var(--text-secondary);
+    font-size: 12px;
+
+    direction: ltr;
+}
+
+
+/* =================================
+   8. Chat Area
+================================= */
+
+.chat-area {
+    flex: 1;
+    overflow-y: auto;
+
+    padding: 40px 25px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.welcome-message {
+    width: 100%;
+    max-width: 850px;
+
+    margin: auto;
+    text-align: center;
+}
+
+.welcome-icon {
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 22px;
+
+    font-size: 25px;
+}
+
+.welcome-message h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.welcome-message > p {
+    color: var(--text-secondary);
+
+    font-size: 14px;
+    line-height: 2;
+
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+
+/* =================================
+   9. Suggestion Cards
+================================= */
+
+.suggestion-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+    margin-top: 45px;
+}
+
+.suggestion-card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    padding: 22px 15px;
+
+    transition: 0.2s;
+}
+
+.suggestion-card:hover {
+    background: var(--surface-hover);
+    border-color: var(--primary);
+
+    transform: translateY(-3px);
+}
+
+.suggestion-card span {
+    font-size: 25px;
+}
+
+.suggestion-card h3 {
+    font-size: 14px;
+    margin: 15px 0 8px;
+}
+
+.suggestion-card p {
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+
+/* =================================
+   10. Message Input
+================================= */
+
+.chat-input-container {
+    padding: 20px 35px 15px;
+
+    border-top: 1px solid var(--border);
+}
+
+.chat-form {
+    max-width: 900px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    padding: 12px;
+
+    transition: border-color 0.2s;
+}
+
+.chat-form:focus-within {
+    border-color: var(--primary);
+}
+
+.chat-form textarea {
+    flex: 1;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    resize: none;
+
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 14px;
+
+    direction: rtl;
+    text-align: right;
+
+    padding: 10px;
+
+    min-height: 45px;
+    max-height: 150px;
+}
+
+.chat-form textarea::placeholder {
+    color: #64748b;
+}
+
+.chat-form button {
+    background: var(--primary);
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 12px 20px;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chat-form button:hover {
+    background: var(--primary-hover);
+}
+
+.input-disclaimer {
+    text-align: center;
+
+    color: #64748b;
+    font-size: 10px;
+
+    margin-top: 12px;
+}
+
+
+/* =================================
+   11. Responsive Design
+================================= */
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        width: 220px;
+        min-width: 220px;
+    }
+
+    .suggestion-cards {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .chat-header {
+        padding: 0 18px;
+    }
+
+    .chat-header h1 {
+        font-size: 16px;
+    }
+
+    .chat-input-container {
+        padding: 15px;
+    }
+
+    .welcome-message h2 {
+        font-size: 20px;
+    }
+
+}
+
+/* =================================
+   12. Chat Messages
+================================= */
+
+.message {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 25px;
+    display: flex;
+}
+
+.user-message {
+    justify-content: flex-start;
+}
+
+.assistant-message {
+    justify-content: flex-end;
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 16px 20px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 2;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    direction: auto;
+    text-align: start;
+}
+
+.user-message .message-bubble {
+    background: var(--primary);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.assistant-message .message-bubble {
+    background: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+}
+
+.loading {
+    color: var(--text-secondary);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.chat-form button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Chat messages vertical layout */
+
+.chat-area {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/* =================================
+   13. Internal Pages
+================================= */
+
+.page-view {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 10px;
+    overflow-y: auto;
+}
+
+.page-view h2 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.page-description {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 2;
+    margin-bottom: 30px;
+}
+
+.unit-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.unit-card,
+.progress-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: 0.2s;
+}
+
+.unit-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.unit-card span {
+    color: #a5b4fc;
+    font-size: 12px;
+    direction: ltr;
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.unit-card h3 {
+    font-size: 14px;
+    direction: ltr;
+    text-align: left;
+    line-height: 1.7;
+}
+
+.progress-card {
+    margin-bottom: 15px;
+}
+
+.progress-card h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.progress-card p {
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+@media (max-width: 700px) {
+    .unit-list {
+        grid-template-columns: 1fr;
+    }
+}
