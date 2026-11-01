@@ -1,9 +1,20 @@
 {
-    "learningGoals": [],
-    "strengths": [],
-    "weaknesses": [],
+    "learningGoals": [
+        "Master JavaScript",
+        "Learn React Native",
+        "Build mobile applications"
+    ],
+    "strengths": [
+        "Good problem-solving skills",
+        "Understands JavaScript variables"
+    ],
+    "weaknesses": [
+        "Needs more practice with JavaScript functions",
+        "Needs more practice with JavaScript arrays"
+    ],
     "preferences": {
         "language": "ar",
-        "teachingStyle": "step-by-step"
+        "teachingStyle": "step-by-step",
+        "explanationLevel": "beginner"
     }
 }

@@ -267,31 +267,130 @@ const pages = {
         subtitle: 'متابعة رحلتك التعليمية',
 
         content: `
-            <h2>التقدم الدراسي</h2>
+    <h2>التقدم الدراسي</h2>
 
-            <p class="page-description">
-                هنا ستتمكن من متابعة الدروس التي أكملتها ومستوى تقدمك في المنهج.
-            </p>
+    <p class="page-description">
+        هنا ستتمكن من متابعة الدروس التي أكملتها ومستوى تقدمك في المنهج.
+    </p>
 
-            <div class="progress-card">
-                <h3>الدروس المكتملة</h3>
-                <p>لم يتم ربط بيانات التقدم بعد.</p>
-            </div>
+    <div class="progress-card">
+        <h3>الدروس المكتملة</h3>
+        <p id="completed-lessons">جارٍ تحميل البيانات...</p>
+    </div>
 
-            <div class="progress-card">
-                <h3>الوحدة الحالية</h3>
-                <p>سيتم عرض وحدتك الحالية هنا.</p>
-            </div>
+    <div class="progress-card">
+        <h3>الوحدة الحالية</h3>
+        <p id="current-unit">جارٍ تحميل البيانات...</p>
+    </div>
 
-            <div class="progress-card">
-                <h3>مستوى الإنجاز</h3>
-                <p>سيتم حساب نسبة تقدمك تلقائياً بعد ربط نظام الذاكرة.</p>
-            </div>
-        `
-    }
+    <div class="progress-card">
+        <h3>الدرس الحالي</h3>
+        <p id="current-lesson">جارٍ تحميل البيانات...</p>
+    </div>
+`
+    },
+    profile: {
+    title: 'ملفي الشخصي',
+    subtitle: 'معلوماتك وأهدافك التعليمية',
+
+    content: `
+        <h2>الملف الشخصي</h2>
+
+        <p class="page-description">
+            معلوماتك وأهدافك التعليمية ونقاط قوتك والجوانب التي تحتاج إلى تطويرها.
+        </p>
+
+        <div class="progress-card">
+            <h3>أهدافي التعليمية</h3>
+            <ul id="profile-goals">
+                <li>جارٍ تحميل البيانات...</li>
+            </ul>
+        </div>
+
+        <div class="progress-card">
+            <h3>نقاط قوتي</h3>
+            <ul id="profile-strengths">
+                <li>جارٍ تحميل البيانات...</li>
+            </ul>
+        </div>
+
+        <div class="progress-card">
+            <h3>الجوانب التي أحتاج إلى تطويرها</h3>
+            <ul id="profile-weaknesses">
+                <li>جارٍ تحميل البيانات...</li>
+            </ul>
+        </div>
+    `
+}
 
 };
 
+// Load progress data from Backend
+async function loadProgress() {
+    try {
+        const response = await fetch('/api/progress');
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Failed to load progress.');
+        }
+
+        const completedLessons = document.getElementById('completed-lessons');
+        const currentUnit = document.getElementById('current-unit');
+        const currentLesson = document.getElementById('current-lesson');
+
+        completedLessons.textContent = data.completedLessons.length;
+
+        currentUnit.textContent = `Unit ${data.currentUnit}`;
+
+        currentLesson.textContent = `Lesson ${data.currentLesson}`;
+
+    } catch (error) {
+        console.error('Failed to load progress:', error);
+    }
+}
+
+// Load student profile from Backend
+async function loadProfile() {
+    try {
+        const response = await fetch('/api/profile');
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Failed to load student profile.');
+        }
+
+        const goals = document.getElementById('profile-goals');
+        const strengths = document.getElementById('profile-strengths');
+        const weaknesses = document.getElementById('profile-weaknesses');
+
+        goals.innerHTML = '';
+        strengths.innerHTML = '';
+        weaknesses.innerHTML = '';
+
+        data.learningGoals.forEach(goal => {
+            const item = document.createElement('li');
+            item.textContent = goal;
+            goals.appendChild(item);
+        });
+
+        data.strengths.forEach(strength => {
+            const item = document.createElement('li');
+            item.textContent = strength;
+            strengths.appendChild(item);
+        });
+
+        data.weaknesses.forEach(weakness => {
+            const item = document.createElement('li');
+            item.textContent = weakness;
+            weaknesses.appendChild(item);
+        });
+
+    } catch (error) {
+        console.error('Failed to load profile:', error);
+    }
+}
 
 // Navigate between pages
 function navigateTo(pageName) {
@@ -341,6 +440,12 @@ function navigateTo(pageName) {
     // Display selected page
     pageView.innerHTML = page.content;
     pageView.style.display = 'block';
+    if (pageName === 'progress') {
+    loadProgress();
+}
+if (pageName === 'profile') {
+    loadProfile();
+}
 
     // Hide chat input outside chat page
     chatInputContainer.style.display = 'none';

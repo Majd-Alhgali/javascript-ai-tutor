@@ -1,6 +1,22 @@
 {
     "currentUnit": 0,
-    "currentLesson": 0,
-    "completedLessons": [],
-    "lastUpdated": null
+    "currentLesson": 3,
+    "completedLessons": [
+        {
+            "unit": 0,
+            "lesson": 1,
+            "completedAt": "2026-10-31T16:26:22.678Z"
+        },
+        {
+            "unit": 0,
+            "lesson": 2,
+            "completedAt": "2026-10-31T16:43:09.287Z"
+        },
+        {
+            "unit": 0,
+            "lesson": 3,
+            "completedAt": "2026-10-31T16:47:15.680Z"
+        }
+    ],
+    "lastUpdated": "2026-10-31T16:47:15.680Z"
 }

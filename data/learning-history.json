@@ -1,1 +1,36 @@
-[]
+{
+    "activities": [
+        {
+            "id": "bfd6800f-e23b-4ef6-a5ec-34cdafa6b7fb",
+            "type": "lesson_completed",
+            "unit": 0,
+            "lesson": 1,
+            "details": {
+                "title": "What Is JavaScript?",
+                "status": "completed"
+            },
+            "timestamp": "2026-10-31T16:35:04.816Z"
+        },
+        {
+            "id": "04dd9308-5c17-4ddd-8119-5342f1930471",
+            "type": "quiz_completed",
+            "unit": 0,
+            "lesson": 1,
+            "details": {
+                "score": 8,
+                "totalQuestions": 10
+            },
+            "timestamp": "2026-10-31T16:35:04.817Z"
+        },
+        {
+            "id": "ebdd4a20-9953-4d93-b8ed-65b139fef8e9",
+            "type": "lesson_completed",
+            "unit": 0,
+            "lesson": 3,
+            "details": {
+                "message": "Lesson completed successfully."
+            },
+            "timestamp": "2026-10-31T16:47:15.682Z"
+        }
+    ]
+}
